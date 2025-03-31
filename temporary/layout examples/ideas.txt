@@ -1,0 +1,3 @@
+- Create random color for the cards
+- Color green and read for read and not read yet
+- Go the extra mile and write an asynchronous function or use a placeholder image and then write a script that googles a photo of the book and displays it (using AI agents can help look for the photo)
