@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <script src="static/js/script.js" defer></script>
 </head>
 <body>
@@ -18,40 +18,57 @@
         <div class="main">
             <div class="library-container">
 
-                <div class="book-continer">
-                    <div class="book-container-heard">
+                <div class="book-container">
+                    <div class="book-container-head">
                         <h3 class="title">The Pragmatic Programmer</h3>
                     </div>
                     <div class="book-container-body">
                         <p class="author-text"><strong>Author(s): </strong>Andy Hunt, Dave Thomas</p>
                         <p class="pages-text"><strong>Pages: </strong>320</p>
-                        <p class="read-text"><strong>Status: </strong>Reading Finished!</p>
+                        <p class="read-text"><strong>Status: </strong><span class="reading-status finished">Reading Finished!</span></p>
+                    </div>
+                    <div class="book-container-footer">
+                        <button class="edit-book-btn">Edit</button>
                     </div>
                 </div>
         
-                <div class="book-continer">
-                    <div class="book-container-heard">
+                <div class="book-container">
+                    <div class="book-container-head">
                         <h3 class="title">Eloquent JavaScript</h3>
                     </div>
                     <div class="book-container-body">
                         <p class="author-text"><strong>Author(s): </strong>Marijn Haverbeke</p>
                         <p class="pages-text"><strong>Pages: </strong>448</p>
-                        <p class="read-text"><strong>Status: </strong>Still Reading ...</p>
+                        <p class="read-text"><strong>Status: </strong><span class="reading-status">Still Reading ...</span></p>
+                    </div>
+                    <div class="book-container-footer">
+                        <button class="edit-book-btn">Edit</button>
                     </div>
                 </div>
         
-                <div class="book-continer">
-                    <div class="book-container-heard">
+                <div class="book-container">
+                    <div class="book-container-head">
                         <h3 class="title">Clean Code</h3>
                     </div>
                     <div class="book-container-body">
                         <p class="author-text"><strong>Author(s): </strong>Robert Cecil Martin</p>
                         <p class="pages-text"><strong>Pages: </strong>464</p>
-                        <p class="read-text"><strong>Status: </strong>Reading Finished!</p>
+                        <p class="read-text"><strong>Status: </strong><span class="reading-status finished">Reading Finished!</span></p>
+                    </div>
+                    <div class="book-container-footer">
+                        <button class="edit-book-btn">Edit</button>
                     </div>
                 </div>
         
             </div>
+
+            <div class="add-book-container">
+                <button class="add-book-btn">
+                    Add Book
+                </button>
+            </div>
+
+            
 
         </div>
         

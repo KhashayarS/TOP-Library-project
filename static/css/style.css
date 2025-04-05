@@ -32,3 +32,113 @@ a {
 }
 
 /* Main CSS */
+/* Custom Properties (Variables) */
+:root {
+    --color-one: #010D26;
+    --color-two: #455D73;
+    --color-three: #84A9BF;
+    --color-four: #A9C6D9;
+    --color-five: #D5E7F2;
+    --color-six: #6DBF67;
+    --color-seven: #1da02e;
+}
+
+body {
+    color: var(--color-four);
+    background-color: var(--color-two);
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .main-container > * {
+    border: 1px solid hotpink;
+}
+
+.library-container > * {
+    border: 1px solid blue;
+}
+
+.book-container > * {
+    border: 1px solid green;
+} */
+
+.main-container {
+    /* position: relative; */
+}
+
+.library-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 300px));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-container {
+    padding: 20px;
+    border: 2px solid var(--color-one);
+    border-radius: 10px;
+    /* width: 300px; */
+    /* text-align: center; */
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    justify-content: center;
+    background-color: var(--color-three);
+    color: var(--color-two)
+}
+
+.book-container-head {
+    text-align: center;
+}
+
+.book-container-body {
+    font-size: 16px;
+    align-self: center;
+}
+
+.reading-status {
+    color: rgb(196, 55, 55);
+}
+
+.reading-status.finished {
+    color: rgb(51, 51, 179);
+}
+
+.book-container-footer {
+    /* border: 1px solid hotpink; */
+    display: flex;
+    justify-content: center;
+}
+
+.edit-book-btn {
+    color: var(--color-seven);
+    font-size: 18px;
+    font-weight: bold;
+    /* text-shadow: #333 1px 1px 2px; */
+    width: 70px;
+    height: 35px;
+    background-color: var(--color-six);
+    border: 1px solid var(--color-seven);
+    border-radius: 5px;
+}
+
+.add-book-btn {
+    font-size: 20px;
+    font-weight: bold;
+    width: 140px;
+    height: 40px;
+    background-color:rgb(173, 23, 179);
+    color: rgb(150, 105, 255);
+    border: 2px solid rgb(150, 105, 255);
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
