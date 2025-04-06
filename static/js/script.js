@@ -5,6 +5,8 @@ const myLibrary = [];
 const libraryContainer = document.querySelector("#library-container");
 const addBookBtn = document.querySelector("#add-book-btn");
 const addBookDialog = document.querySelector("#add-book-dialog");
+const addBookForm = document.querySelector("#add-book-form");
+const confirmAddBookBtn = document.querySelector("#confirm-add-book-btn");
 
 // HTML templates
 const bookTemplateHTML = `
@@ -49,12 +51,24 @@ myLibrary.push(bookOne, bookTwo, bookThree);
 // console.log(bookTwo.info());
 // console.log(bookThree.info());
 
+
+// Events
+
+// Display books right after the page gets loaded
+document.addEventListener("DOMContentLoaded", displayBooks);
+
 // Display and handle the add book dialog
 addBookBtn.addEventListener("click", openAddBookDialogHandler);
+addBookForm.addEventListener("submit", addBookHandler);
 
 
-// Event Handlers
-function displayBooksHandler(event) {
+// Event handlers and helper functions
+function clearLibraryDisplay() {
+    libraryContainer.innerHTML = '';
+}
+
+function displayBooks(event) {
+    clearLibraryDisplay();
     let bookHTML;
     myLibrary.forEach(book => {
         const bookIsRead = book.read ? 'Reading Finished!' : 'Still Reading ...';
@@ -77,6 +91,11 @@ function displayBooksHandler(event) {
             `<p class="read-text"><strong>Status: </strong><span class="reading-status finished"></span></p>`,
             `<p class="read-text"><strong>Status: </strong><span class="reading-status ${bookIsReadClass}">${bookIsRead}</span></p>`
         );
+        
+        bookHTML = bookHTML.replace(
+            `<button class="edit-book-btn">Edit</button>`,
+            `<button class="edit-book-btn" data-book-id="${book.id}">Edit</button>`
+        );
 
         libraryContainer.insertAdjacentHTML('beforeend', bookHTML);
 
@@ -85,4 +104,29 @@ function displayBooksHandler(event) {
 
 function openAddBookDialogHandler(event) {
     addBookDialog.showModal();
+}
+
+function addBook(book) {
+    myLibrary.push(book);
+}
+
+function resetForm(form) {
+    form.reset();
+}
+
+function addBookHandler(event) {
+    event.preventDefault();
+    // console.log(event.target);
+    const formData = new FormData(addBookForm);
+    const title = formData.get('new-book-title');
+    const writer = formData.get('new-book-writer') ? formData.get('new-book-writer') : "-";
+    const pages = formData.get('new-book-pages') ? formData.get('new-book-pages') : "-";
+    const read = formData.get('new-book-read') ? true : false;
+    const newBook = new Book(title, writer, pages, read);
+    
+    addBook(newBook);
+    resetForm(addBookForm);
+    addBookDialog.close();
+
+    displayBooks();
 }
