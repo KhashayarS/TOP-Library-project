@@ -40,7 +40,9 @@ a {
     --color-four: #A9C6D9;
     --color-five: #D5E7F2;
     --color-six: #6DBF67;
-    --color-seven: #1da02e;
+    --color-seven: #108b21;
+    --color-eight: #fc5d5d;
+    --color-nine: #c20000;
 }
 
 body {
@@ -142,3 +144,61 @@ body {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.add-book-dialog {
+    background-color: var(--color-five);
+    color: var(--color-one);
+    padding: 20px;
+    width: 500px;
+    border-radius: 5px;
+}
+
+.add-book-input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-book-input-container > * {
+    /* border: 1px solid hotpink; */
+    margin: 5px 0;
+}
+
+.add-book-input-container > input {
+    width: 200px;
+    background: var(--color-four)
+}
+
+.add-book-input-container > label {
+    font-weight: bold;
+}
+
+.add-book-btn-container {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.add-book-btn-container button {
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    font-weight: bold;
+    border-width: 3px;
+    border-radius: 5px;
+}
+
+.confirm-add-book-btn {
+    background-color: var(--color-six);
+    color: var(--color-seven);
+    border-color: var(--color-seven);
+}
+
+.cancel-add-book-btn {
+    background-color: var(--color-eight);
+    color: var(--color-nine);
+    border-color: var(--color-nine);
+}
+
+
+/* TESTING CSS */
