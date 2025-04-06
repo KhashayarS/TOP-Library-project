@@ -4,3 +4,4 @@
 - Test too many cards layout
 - library background for the page
 - Use icons
+- Event handler => show books, run when page loads and when the add and remove butotn are activated

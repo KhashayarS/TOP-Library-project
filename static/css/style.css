@@ -151,8 +151,15 @@ body {
     padding: 20px;
     width: 500px;
     border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
+.add-book-dialog::backdrop {
+    backdrop-filter: blur(5px);
+}
 .add-book-input-container {
     display: flex;
     justify-content: space-between;

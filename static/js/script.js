@@ -1,3 +1,8 @@
+// Define variables
+const addBookBtn = document.querySelector("#add-book-btn");
+const addBookDialog = document.querySelector("#add-book-dialog");
+
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -13,3 +18,12 @@ function Book(title, author, pages, read) {
 // Instantiate a book
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tokien', 295, false);
 console.log(theHobbit.info());
+
+// Display and handle the add book dialog
+addBookBtn.addEventListener("click", addBookDialogHandler);
+
+
+// Event Handlers
+function addBookDialogHandler(event) {
+    addBookDialog.showModal();
+}
