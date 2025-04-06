@@ -6,7 +6,7 @@ const libraryContainer = document.querySelector("#library-container");
 const addBookBtn = document.querySelector("#add-book-btn");
 const addBookDialog = document.querySelector("#add-book-dialog");
 const addBookForm = document.querySelector("#add-book-form");
-const confirmAddBookBtn = document.querySelector("#confirm-add-book-btn");
+const cancelAddBookBtn = document.querySelector("#cancel-add-book-btn");
 
 // HTML templates
 const bookTemplateHTML = `
@@ -52,7 +52,7 @@ myLibrary.push(bookOne, bookTwo, bookThree);
 // console.log(bookThree.info());
 
 
-// Events
+// EVENTS
 
 // Display books right after the page gets loaded
 document.addEventListener("DOMContentLoaded", displayBooks);
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", displayBooks);
 // Display and handle the add book dialog
 addBookBtn.addEventListener("click", openAddBookDialogHandler);
 addBookForm.addEventListener("submit", addBookHandler);
-
+cancelAddBookBtn.addEventListener("click", cancelAddBookHandler);
 
 // Event handlers and helper functions
 function clearLibraryDisplay() {
@@ -129,4 +129,9 @@ function addBookHandler(event) {
     addBookDialog.close();
 
     displayBooks();
+}
+
+function cancelAddBookHandler(event) {
+    resetForm(addBookForm);
+    addBookDialog.close();
 }

@@ -43,6 +43,12 @@ a {
     --color-seven: #108b21;
     --color-eight: #fc5d5d;
     --color-nine: #c20000;
+    --color-ten: #959cff;
+    --color-eleven: #1a28e8;
+    --color-twelve: #9395ff;
+    --color-thirteen: #18108b;
+    --color-fourteen: rgb(46, 114, 19);
+    --color-fifteen: rgb(226, 116, 13);
 }
 
 body {
@@ -119,14 +125,14 @@ body {
 }
 
 .edit-book-btn {
-    color: var(--color-seven);
+    color: var(--color-eleven);
     font-size: 18px;
     font-weight: bold;
     /* text-shadow: #333 1px 1px 2px; */
     width: 70px;
     height: 35px;
-    background-color: var(--color-six);
-    border: 1px solid var(--color-seven);
+    background-color: var(--color-ten);
+    border: 1px solid var(--color-eleven);
     border-radius: 5px;
 }
 
@@ -145,7 +151,7 @@ body {
     transform: translateX(-50%);
 }
 
-.add-book-dialog {
+.dialog {
     background-color: var(--color-five);
     color: var(--color-one);
     padding: 20px;
@@ -157,40 +163,49 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.add-book-dialog::backdrop {
+.dialog::backdrop {
     backdrop-filter: blur(5px);
 }
-.add-book-input-container {
+
+.add-book-dialog h3 {
+    color: var(--color-fourteen);
+}
+
+.edit-book-dialog h3 {
+    color: var(--color-fifteen);
+}
+
+.book-input-container {
     display: flex;
     justify-content: space-between;
 }
 
-.add-book-input-container > * {
+.book-input-container > * {
     /* border: 1px solid hotpink; */
     margin: 5px 0;
 }
 
-.add-book-dialog h3 {
+.dialog h3 {
     margin-bottom: 20px;
 }
 
-.add-book-input-container > input {
+.book-input-container > input {
     width: 200px;
     background: var(--color-four)
 }
 
-.add-book-input-container > label {
+.book-input-container > label {
     font-weight: bold;
 }
 
-.add-book-btn-container {
+.book-btn-container {
     /* border: 1px solid blue; */
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
 
-.add-book-btn-container button {
+.book-btn-container button {
     width: 100px;
     height: 40px;
     margin: 10px;
@@ -199,17 +214,21 @@ body {
     border-radius: 5px;
 }
 
-.confirm-add-book-btn {
+.confirm-book-btn {
     background-color: var(--color-six);
     color: var(--color-seven);
     border-color: var(--color-seven);
 }
 
-.cancel-add-book-btn {
+.cancel-book-btn {
     background-color: var(--color-eight);
     color: var(--color-nine);
     border-color: var(--color-nine);
 }
 
+.confirm-edit-book-btn {
+    color: var(--color-thirteen);
+    background-color: var(--color-twelve);
+}
 
 /* TESTING CSS */
