@@ -11,6 +11,7 @@ const editBookDialog = document.querySelector("#edit-book-dialog");
 const editBookForm = document.querySelector("#edit-book-form");
 const confirmEditBookBtn = document.querySelector("#confirm-edit-book-btn");
 const cancelEditBookBtn = document.querySelector("#cancel-edit-book-btn");
+const trashIconBtn = document.querySelector("#trash-icon-btn");
 
 let editBookBtnArray = [];
 
@@ -71,6 +72,7 @@ cancelAddBookBtn.addEventListener("click", cancelAddBookHandler);
 // Add events to apply and cancel key of the edit form
 confirmEditBookBtn.addEventListener("click", confirmEditBookHandler);
 cancelEditBookBtn.addEventListener("click", cancelEditFormHandler);
+trashIconBtn.addEventListener("click", deleteBookHandler);
 
 // Event handlers and helper functions
 function clearLibraryDisplay() {
@@ -194,6 +196,7 @@ function fillEditForm(form, data) {
         readInput.removeAttribute('checked');
     }
     applyBtn.setAttribute('data-book-id', data['id']);
+    trashIconBtn.setAttribute('data-book-id', data['id']);
 }
 
 function editBtnHandler(event) {
@@ -213,3 +216,13 @@ function editBtnHandler(event) {
 function cancelEditFormHandler(event) {
     editBookDialog.close();
 }
+
+function deleteBookHandler(event) {
+    event.preventDefault();
+    const currentBookID = event.currentTarget.getAttribute('data-book-id');
+    const currentBookIndex = myLibrary.findIndex(book => book['id'] === currentBookID);
+    if (currentBookIndex !== -1) myLibrary.splice(currentBookIndex, 1);
+    editBookDialog.close();
+    displayBooks();
+}
+

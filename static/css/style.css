@@ -31,6 +31,10 @@ a {
     color: inherit;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 /* Main CSS */
 /* Custom Properties (Variables) */
 :root {
@@ -231,6 +235,27 @@ body {
 .confirm-edit-book-btn {
     color: var(--color-thirteen);
     background-color: var(--color-twelve);
+}
+
+.book-btn-container .trash-icon-btn {
+    width: 30px;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog button {
+    cursor: pointer;
+}
+
+.trash-icon-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: rgb(82, 74, 74);
 }
 
 /* TESTING CSS */
