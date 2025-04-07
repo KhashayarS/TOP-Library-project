@@ -7,6 +7,12 @@ const addBookBtn = document.querySelector("#add-book-btn");
 const addBookDialog = document.querySelector("#add-book-dialog");
 const addBookForm = document.querySelector("#add-book-form");
 const cancelAddBookBtn = document.querySelector("#cancel-add-book-btn");
+const editBookDialog = document.querySelector("#edit-book-dialog");
+const editBookForm = document.querySelector("#edit-book-form");
+const confirmEditBookBtn = document.querySelector("#confirm-edit-book-btn");
+const cancelEditBookBtn = document.querySelector("#cancel-edit-book-btn");
+
+let editBookBtnArray = [];
 
 // HTML templates
 const bookTemplateHTML = `
@@ -26,13 +32,13 @@ const bookTemplateHTML = `
 `;
 
 // Book cunstructor
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id=false) {
     const randomID = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = randomID;
+    this.id = id ? id : randomID;
     this.info = function () {
         const readString = this.read ? 'read' : 'not read yet';
         const book_info = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
@@ -61,6 +67,10 @@ document.addEventListener("DOMContentLoaded", displayBooks);
 addBookBtn.addEventListener("click", openAddBookDialogHandler);
 addBookForm.addEventListener("submit", addBookHandler);
 cancelAddBookBtn.addEventListener("click", cancelAddBookHandler);
+
+// Add events to apply and cancel key of the edit form
+confirmEditBookBtn.addEventListener("click", confirmEditBookHandler);
+cancelEditBookBtn.addEventListener("click", cancelEditFormHandler);
 
 // Event handlers and helper functions
 function clearLibraryDisplay() {
@@ -98,9 +108,15 @@ function displayBooks(event) {
         );
 
         libraryContainer.insertAdjacentHTML('beforeend', bookHTML);
-
     });
-}
+
+    // Now that the display is updated we can update the edit buttons array and we add the handlers as well
+    editBookBtnArray = document.querySelectorAll(".edit-book-btn");
+
+    editBookBtnArray.forEach(editBtnElement => {
+        editBtnElement.addEventListener("click", editBtnHandler);
+    });
+};
 
 function openAddBookDialogHandler(event) {
     addBookDialog.showModal();
@@ -110,8 +126,16 @@ function addBook(book) {
     myLibrary.push(book);
 }
 
-function resetForm(form) {
+function resetForm(form, resetValueAttributes = false) {
     form.reset();
+    if (resetValueAttributes) {
+        let inputElements = form.querySelectorAll('input');
+        let inputElementsArray = Array.from(inputElements).filter(input => input['type'] !== 'submit');
+
+        inputElementsArray.forEach(input => {
+            input.setAttribute('value', '');
+        });
+    }
 }
 
 function addBookHandler(event) {
@@ -126,12 +150,66 @@ function addBookHandler(event) {
     
     addBook(newBook);
     resetForm(addBookForm);
-    addBookDialog.close();
 
+    addBookDialog.close();
+    displayBooks();
+}
+
+function confirmEditBookHandler(event) {
+    event.preventDefault();
+    const formData = new FormData(editBookForm);
+    const title = formData.get('current-book-title');
+    const writer = formData.get('current-book-writer') ? formData.get('current-book-writer') : "-";
+    const pages = formData.get('current-book-pages') ? formData.get('current-book-pages') : "-";
+    // const read = formData.get('current-book-read') ? true : false;
+    const read = editBookForm.querySelector('#current-book-read').checked;
+    const id = editBookForm.querySelector('#confirm-edit-book-btn').getAttribute('data-book-id');
+    
+    const currentBookIndex = myLibrary.findIndex(book => book.id === id);
+    const editedBook = new Book(title, writer, pages, read, id);
+    myLibrary[currentBookIndex] = editedBook;
+
+    editBookDialog.close();
     displayBooks();
 }
 
 function cancelAddBookHandler(event) {
-    resetForm(addBookForm);
+    resetForm(addBookForm, resetValueAttributes=true);
     addBookDialog.close();
+}
+
+function fillEditForm(form, data) {
+    const titleInput = form.querySelector('#current-book-title');
+    const writerInput = form.querySelector('#current-book-writer');
+    const pagesInput = form.querySelector('#current-book-pages');
+    const readInput = form.querySelector('#current-book-read');
+    const applyBtn = form.querySelector('#confirm-edit-book-btn');
+
+    titleInput.setAttribute('value', data['title']);
+    writerInput.setAttribute('value', data['writer']);
+    pagesInput.setAttribute('value', data['pages']);
+    if (data['read']) {
+        readInput.setAttribute('checked', '');
+    } else {
+        readInput.removeAttribute('checked');
+    }
+    applyBtn.setAttribute('data-book-id', data['id']);
+}
+
+function editBtnHandler(event) {
+    const currentBookID = event.target.getAttribute('data-book-id');
+    const currentBook = myLibrary.find(book => book['id'] === currentBookID);
+    resetForm(editBookForm, resetValueAttributes=true);
+    fillEditForm(editBookForm, data={
+        title: currentBook['title'],
+        writer: currentBook['author'],
+        pages: currentBook['pages'],
+        read: currentBook['read'],
+        id: currentBook['id']
+    })
+    editBookDialog.showModal();
+}
+
+function cancelEditFormHandler(event) {
+    editBookDialog.close();
 }

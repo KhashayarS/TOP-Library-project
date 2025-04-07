@@ -92,22 +92,24 @@ body {
     padding: 20px;
     border: 2px solid var(--color-one);
     border-radius: 10px;
-    /* width: 300px; */
-    /* text-align: center; */
     display: grid;
     grid-template-rows: 1fr 5fr;
-    justify-content: center;
     background-color: var(--color-three);
-    color: var(--color-two)
+    color: var(--color-two);
 }
 
 .book-container-head {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .book-container-body {
     font-size: 16px;
     align-self: center;
+}
+
+.book-container-body > p {
+    margin: 8px 0;
 }
 
 .reading-status {

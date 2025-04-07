@@ -1,7 +1,11 @@
 - Create random color for the cards
 - Color green and read for read and not read yet
+<<<<<<< HEAD
 - Go the extra mile and write an asynchronous function or use a placeholder image and then write a script that googles a photo of the book and displays it (using AI agents can help look for the photo)
 - Test too many cards layout
 - library background for the page
 - Use icons
 - Event handler => show books, run when page loads and when the add and remove butotn are activated
+=======
+- Go the extra mile and write an asynchronous function or use a placeholder image and then write a script that googles a photo of the book and displays it (using AI agents can help look for the photo)
+>>>>>>> parent of 591de31 (Create the basic layout of the page with styling)

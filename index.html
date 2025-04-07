@@ -57,7 +57,7 @@
                 </form>
             </dialog>
 
-            <dialog class="dialog edit-book-dialog" open>
+            <dialog class="dialog edit-book-dialog" id="edit-book-dialog">
                 <form action="dialog" id="edit-book-form">
                     <h3>Edit the book</h3>
                     <div class="book-input-container edit-book-input-container">
@@ -77,11 +77,11 @@
 
                     <div class="book-input-container edit-book-input-container">
                         <label for="current-book-read">Have you read it?</label>
-                        <input type="checkbox" id="current-book-read" name="current-book-read" checked>
+                        <input type="checkbox" id="current-book-read" name="current-book-read">
                     </div>
 
                     <div class="book-btn-container edit-book-btn-container">
-                        <button class="confirm-book-btn confirm-edit-book-btn" id="confirm-edit-book-btn" type="submit" value="add">Apply</button>
+                        <button class="confirm-book-btn confirm-edit-book-btn" id="confirm-edit-book-btn" type="submit" value="add" data-book-id="">Apply</button>
                         <button class="cancel-book-btn cancel-edit-book-btn" id="cancel-edit-book-btn" value="cancel" type="button">Cancel</button>
                     </div>
                 </form>
