@@ -98,7 +98,7 @@ body {
     border-radius: 10px;
     display: grid;
     grid-template-rows: 1fr 5fr;
-    background-color: var(--color-three);
+    background-color: var(--color-five);
     color: var(--color-two);
 }
 
