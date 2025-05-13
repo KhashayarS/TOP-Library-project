@@ -32,7 +32,25 @@ const bookTemplateHTML = `
                 </div>
 `;
 
-// Book cunstructor
+// Book class
+class Book {
+    constructor(title, author, pages, read, id=false){
+        const randomID = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = id ? id : randomID;
+        this.info = function () {
+            const readString = this.read ? 'read' : 'not read yet';
+            const book_info = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
+            return book_info;
+        }
+    }
+}
+
+/*
+
 function Book(title, author, pages, read, id=false) {
     const randomID = crypto.randomUUID();
     this.title = title;
@@ -46,6 +64,8 @@ function Book(title, author, pages, read, id=false) {
         return book_info;
     }
 }
+
+*/
 
 // Instantiate default books and display them on the page
 const bookOne = new Book('The Pragmatic Programmer', 'Andy Hunt, Dave Thomas', 320, true);
